@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--  <form method="post">
+            <button id="logout" > logout</button>
+            </form> -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body style="width: 90vw; height: 80vh">
+    <div id="buttonholder">
+      <button id="start" type="button" style="text-align: center;width: 150px;">Repo Rate</button>
+      <div class="slidecontainer"  style="display: flex; flex-direction: column; justify-content: center;align-items: center;">
+        <h3 id="namechange">Repo Rate</h3>
+        <input type="range" min="1" max="10" step="0.5" class="slider" id="myRange">
+        <div id="slidecontainer" ></div>
+      </div>
+      <button id="decrease" type="button" style="text-align: center;width: 150px;">Reverse Repo Rate</button>
+    </div>
+
+    <div id="bankholder">
+      <img src="/images/transparent_2024-03-04T10-27-55 (1).png" id="bank" />
+      <canvas id="canvas"></canvas>
+      <img src="/images/transparent_2024-03-04T10-27-55 (1).png" id="reservebank" />
+    </div>
+    <div id="name">
+      <h1 id="name1">Reserve Bank Of India</h1>
+      <h1 id="name2">Bank </h1>
+
+    </div>
+
+    
+    <script src="script.js"></script> 
+  </body>
+</html>
+
+

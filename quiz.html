@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap");
+
+:root {
+  --accent-color: #c7b0c3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fffbf6;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.quiz-container {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  width: 650px;
+  padding: 4rem;
+}
+
+.loading-bar {
+  width: 100%;
+  height: 5px;
+  background-color: #eee;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.loading-bar-progress {
+  background-color: var(--accent-color);
+  height: 100%;
+  width: 0;
+  transition: 0.3s ease;
+}
+
+h2 {
+  font-size: 22px;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+}
+
+ul li input {
+  display: none;
+}
+
+ul li label {
+  cursor: pointer;
+  display: block;
+  color: #666;
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 50px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  transition: 0.1s ease;
+}
+
+ul li input:hover + label {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+ul li input:checked + label {
+  outline: 2px solid var(--accent-color);
+  color: var(--accent-color);
+}
+
+button {
+  color: var(--accent-color);
+  background-color: transparent;
+  font-family: inherit;
+  border: none;
+  display: block;
+  cursor: pointer;
+  margin: auto;
+  font-size: 1.1rem;
+  font-family: inherit;
+  padding: 1rem;
+  transition: 0.1s ease;
+}
+
+button:hover {
+  transform: translateY(-3px);
+}
+
+button:active {
+  transform: translateY(2px);
+}
+
+    </style>
+</head>
+<body>
+    
+    <!--=============== FONT AWESOME ===============-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+<div class="quiz-container" id="quiz">
+  <h2 id="question">Question</h2>
+  <div class="loading-bar">
+    
+    <div class="loading-bar-progress" id="loading-bar-progress"></div>
+  </div>
+  <ul>
+    <li>
+      <input type="radio" name="answer" id="a" class="answer">
+      <label for="a" id="a_text">Answer</label>
+    </li>
+    <li>
+      <input type="radio" name="answer" id="b" class="answer">
+      <label for="b" id="b_text">Answer</label>
+    </li>
+    <li>
+      <input type="radio" name="answer" id="c" class="answer">
+      <label for="c" id="c_text">Answer</label>
+    </li>
+    <li>
+      <input type="radio" name="answer" id="d" class="answer">
+      <label for="d" id="d_text">Answer</label>
+    </li>
+  </ul>
+  <button id="submit">Next <i class="fa-solid fa-chevron-right"></i></button>
+</div>
+
+</body>
+<script>
+const quizData = [
+  {
+    question: "What is the primary regulator of the Indian stock market?",
+    a: "Reserve Bank of India (RBI)",
+    b: "Securities and Exchange Board of India (SEBI)",
+    c: "Python",
+    d: "Ministry of Finance",
+    correct: "b"
+  },
+  {
+    question: "Which Indian institution is responsible for issuing and regulating monetary policy?",
+    a: "Ministry of Finance",
+    b: "Reserve Bank of India (RBI)",
+    c: "Securities and Exchange Board of India (SEBI)",
+    d: "National Stock Exchange (NSE)",
+    correct: "b"
+  }
+];
+
+const quiz = document.getElementById("quiz");
+const answerEls = document.querySelectorAll(".answer");
+const questionEl = document.getElementById("question");
+const a_text = document.getElementById("a_text");
+const b_text = document.getElementById("b_text");
+const c_text = document.getElementById("c_text");
+const d_text = document.getElementById("d_text");
+const submitBtn = document.getElementById("submit");
+const loadingProgress = document.getElementById("loading-bar-progress");
+
+let currentQuiz = 0;
+let score = 0;
+
+loadQuiz();
+
+function loadQuiz() {
+  deselectAnswers();
+
+  const currentQuizData = quizData[currentQuiz];
+
+  questionEl.innerText = currentQuizData.question;
+  a_text.innerText = currentQuizData.a;
+  b_text.innerText = currentQuizData.b;
+  c_text.innerText = currentQuizData.c;
+  d_text.innerText = currentQuizData.d;
+}
+
+function deselectAnswers() {
+  answerEls.forEach((answerEl) => (answerEl.checked = false));
+}
+
+function getSelected() {
+  let answer;
+
+  answerEls.forEach((answerEl) => {
+    if (answerEl.checked) {
+      answer = answerEl.id;
+    }
+  });
+
+  return answer;
+}
+
+submitBtn.addEventListener("click", () => {
+  const answer = getSelected();
+
+  if (answer) {
+    if (answer === quizData[currentQuiz].correct) {
+      score++;
+    }
+
+    currentQuiz++;
+    loadingProgress.style.width = `${(currentQuiz * 100) / quizData.length}%`;
+
+    if (currentQuiz < quizData.length) {
+      loadQuiz();
+    } else {
+      quiz.innerHTML = `
+                <h2>You answered ${score}/${quizData.length} questions correctly</h2>
+
+                <button onclick="window.location.href = 'quizrew.html';">Collect you reward</i></button>
+            `;
+    }
+  }
+});
+
+</script>
+</html>

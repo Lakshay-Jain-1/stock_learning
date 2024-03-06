@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="cs.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    
+    <title>Home</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body style="background-color: #fffbf6; " class="show-chatbot">
+
+    <nav  style="background-color: #f8dbb7;" class="navbar navbar-expand-lg bg-body- navbg">
+        <div class="container-fluid" >
+          <a  class="navbar-brand" href="#">Stock Learnings</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item" >
+                <a  class="nav-link active" aria-current="page" href="ht.html" >Home</a>
+              </li>
+              <li class="nav-item">
+                <a  class="nav-link" href="News_Card/news.html">News</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/stock">Stocks</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a   class="nav-link dropdown-toggle" href="Games_tabv/games.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Simulation
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/com">Compounding</a></li>
+                  <li>  <a class="dropdown-item" href="/game">Repo</a></li> 
+                  <li><a class="dropdown-item" href="/quiz">Fun Facts</a></li>
+                </ul>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+        <div class="sign d-flex me-3 align-items-center">
+            <form method="post" action="/" >
+              <button style="margin: 2px;" class="btn ">Logout</button>
+            </form>
+           
+          </div>
+      </nav>
+      
+    <div style="background-color: #fffbf6;" class="d-flex flex-column align-items-center  divhero">
+      <h1 class="mt-5 text-center intro"><b> One-stop destination <br> for Stock Market </b></h1>
+      <div class="w-75">
+      <p class="m-2 pt-0 pb-4 text-center para1">Your go-to resource for learning about stocks. Simplifying the complexities of the <br> stock market to help you make informed investment decisions. </p>
+      </div>
+      <button type="button" style="background-color: #0F2C59; border-color: #0F2C59;"  class="btn p-3 mb-4 btn-lg btn-primary rounded-pill ">Start Learning</button>
+      <div style="background-color: white; border-radius: 45px; border: 1px solid #d8cdc0; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;" class="m-4 p-2 px-5">
+      <div class="tradingview-widget-container my-5 rounded">
+  <div class="tradingview-widget-container__widget"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+  {
+  "symbols": [
+    [
+      "Apple",
+      "AAPL|1D"
+    ],
+    [
+      "Google",
+      "GOOGL|1D"
+    ],
+    [
+      "Microsoft",
+      "MSFT|1D"
+    ],
+    [
+      "NSE:TATAMOTORS|1D"
+    ]
+  ],
+  "chartOnly": false,
+  "width": "820",
+  "height": 400,
+  "locale": "en",
+  "colorTheme": "light",
+  "autosize": false,
+  "showVolume": false,
+  "showMA": false,
+  "hideDateRanges": false,
+  "hideMarketStatus": false,
+  "hideSymbolLogo": false,
+  "scalePosition": "right",
+  "scaleMode": "Normal",
+  "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+  "fontSize": "10",
+  "noTimeScale": false,
+  "valuesTracking": "1",
+  "changeMode": "price-and-percent",
+  "chartType": "area",
+  "maLineColor": "#2962FF",
+  "maLineWidth": 1,
+  "maLength": 9,
+  "lineWidth": 2,
+  "lineType": 0,
+  "dateRanges": [
+    "1d|1",
+    "1m|30",
+    "3m|60",
+    "12m|1D",
+    "60m|1W",
+    "all|1M"
+  ]
+}
+  </script>
+        </div>
+      </div>
+    </div>
+
+  <div style="background-color: #fffbf6; width: 100%;"class="container  mt-5 mb-5">
+    <div class="card-group vgr-cards">
+      <div class="d-flex align-items-center">
+        <div class="card-img-body">
+        <img class="rounded" src="https://picsum.photos/id/233/500/230" alt="Card image cap">
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little
+            bit longer.</p>
+          <a href="#" class="btn btn-outline-primary">Primary</a>
+        </div>
+      </div>
+      <div class="d-flex align-items-center flex-row-reverse">
+        <div class="card-img-body">
+        <img class="rounded" src="https://picsum.photos/id/12/500/230" alt="Card image cap">
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little
+            bit longer.</p>
+          <a href="#" class="btn btn-outline-primary">Primary</a>
+        </div>
+      </div>
+      <div class="d-flex align-items-center ">
+        <div class="card-img-body">
+        <img class="rounded" src="https://picsum.photos/500/230" alt="Card image cap">
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little
+            bit longer.</p>
+          <a href="#" class="btn btn-outline-primary">Primary</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button id="chatbot-toggler" onclick="toggleChatbot()">
+    <img style="width: 50px; height: 50px;" src="./chat1.jpeg">
+  </button>
+  <div id="chatbot">
+    <header>
+      <h2>Chatbot</h2>
+    </header>
+    <div id="chatcontainer">
+      <ul id="chatbox"></ul>
+      <!-- Add input field here -->
+      <div class="chat-input " style="margin-top: 70px;" >
+        <input id="message" type="text" placeholder="Type your message..." >
+        <button onclick="send()">Send</button>
+      </div>
+    </div>
+  </div>
+  
+ 
+  <div class="footer">
+        <div class="container">     
+            <div class="row">                       
+                <div class="col-lg-4 col-sm-4 col-xs-12">
+                    <div class="single_footer">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#">Lorem Ipsum</a></li>
+                            <li><a href="#">Simply dummy text</a></li>
+                            <li><a href="#">The printing and typesetting </a></li>
+                            <li><a href="#">Standard dummy text</a></li>
+                            <li><a href="#">Type specimen book</a></li>
+                        </ul>
+                    </div>
+                </div><!--- END COL --> 
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="single_footer single_footer_address">
+                        <h4>Page Link</h4>
+                        <ul>
+                            <li><a href="#">Lorem Ipsum</a></li>
+                            <li><a href="#">Simply dummy text</a></li>
+                            <li><a href="#">The printing and typesetting </a></li>
+                            <li><a href="#">Standard dummy text</a></li>
+                            <li><a href="#">Type specimen book</a></li>
+                        </ul>
+                    </div>
+                </div><!--- END COL -->
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="single_footer single_footer_address">
+                        <h4>Subscribe today</h4>
+                        <div class="signup_form">                           
+                            <form action="#" class="subscribe">
+                                <input type="text" class="subscribe__input" placeholder="Enter Email Address">
+                                <button type="button" class="subscribe__btn"><i class="fas fa-paper-plane"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="social_profile">
+                        <ul>
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        </ul>
+                    </div>                          
+                </div><!--- END COL -->         
+            </div><!--- END ROW --> 
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
+                    <p class="copyright">Copyright © 2019 <a href="#">StockLearning</a>.</p>
+                </div><!--- END COL -->                 
+            </div><!--- END ROW -->                 
+        </div><!--- END CONTAINER -->
+  </div> 
+
+<script>
+
+  
+  
+let chatbotVisible = false;
+const chatbot = document.getElementById("chatbot");
+    chatbot.style.display = "none";
+    chatbot.style.height = "0";
+ 
+function toggleChatbot() {
+  const chatbot = document.getElementById("chatbot");
+  if (!chatbotVisible) {
+    chatbot.style.display = "block";
+    chatbot.style.height = "550px";
+  } else {
+    chatbot.style.display = "none";
+    chatbot.style.height = "0";
+  }
+  chatbotVisible = !chatbotVisible;
+}
+
+function send(){
+  console.log(document.getElementById("message").value)
+  const element = document.createElement("li")
+  element.style.marginBottom="10px"
+  document.getElementById("chatbox").style.listStyleType="none"
+  element.appendChild(document.createTextNode(`${ document.getElementById("message").value}`))
+  document.getElementById("chatbox").appendChild(element)
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+  }
+  body{
+    background-color: whitesmoke;
+  }
+  #buttonholder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    column-gap: 320px;
+  }
+  button{
+   width: 60px;
+  }
+  
+  #bankholder{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 100px;
+    margin-bottom: 20px;
+  }
+  
+  #name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 410px;
+  }
+  #name1{
+    margin-left: -100px;
+  }
+  #name2{
+   margin-left: -130px;
+  }

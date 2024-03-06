@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+.credit {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    opacity: 0.8;
+    font-size: 12px
+  }
+  #myChart {
+    max-height: 460px;
+  }
+  .chartDiv {
+    max-height: 493px;
+    background-color: #fffbf6;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+    font-size: 18px;
+    letter-spacing: 1px;
+  }
+  .display_result {
+    font-size: 22px;
+      color: #4895ef;
+  }
+  
+  .form-range {
+      width: inherit !important;
+    margin: 10px 0;
+  }
+  
+  .text_input {
+      height: 40px;
+      float: right;
+      outline: 0;
+      border: 1px solid #ccc;
+  }
+  
+  .outer_div {
+      min-height: 100px;
+      background-color: #fffbf6;
+      padding: 20px;
+      margin-bottom: 2px;
+  }
+  .outer_div2 {
+      padding: 20px 70px 20px 30px;
+  }
+  .hide-span {
+    opacity: 0; z-index: -9
+  }
+  
+  .inner_div {
+      /* border-left: 5px solid #0ebeff; */
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding-left: 10px;
+      position: relative;
+  }
+  
+  .row {
+    --bs-gutter-x: 0 !important;
+    background-color: #fffbf6;
+  }
+  .slider_box {
+  /*     position: absolute;
+      right: 20px;
+      align-items: center; */
+  }
+  
+  input[type="range"]:focus {
+      outline: none;
+  }
+  
+  input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      border: 1px solid #fff;
+      height: 30px;
+      width: 15px;
+      border-radius: 3px;
+      background: #4895ef;
+      cursor: pointer;
+      margin-top: -10px;
+      /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+      box-shadow: 0px 0px 0px #000000, 0px 0px 3px #0d0d0d;
+      outline: 0;
+  }
+  
+  #showValue,
+  #showValue2, #showValue3 {
+      position: absolute;
+      border: 1px solid #9ccaff;
+      width: 40px;
+      height: 30px;
+      background: #ffffff;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #00a1ff;
+      top: 45px;
+      left: 0px;
+  }
+  
+  #showAmps {
+  }
+  #showValue:before, #showValue2:before, #showValue3:before {
+      content: '';
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid transparent;
+      border-bottom: 7px solid #4895ef;
+      height: 0px;
+      width: 0px;
+      position: absolute;
+      /* left: 0; */
+      top: -12px;
+  }
+  .thisthis {
+      font-weight: 300;
+      font-size: 11px;
+      float: right;
+      line-height: 2;
+  }
+  .text-center {
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  @media only screen and (max-width: 500px) {
+      .text_input {
+          margin-left: 10px;
+          font-size: 18px;
+          padding: 5px;
+          width: 100px;
+      }
+      #textValue, #textValue2 {
+          font-size: 16px;
+          padding: 2px;
+      }
+      .outer_div2, .outer_div {
+          padding: 10px;
+      }
+      .inner_div {
+          margin: 0;
+      }
+      .slider_box {
+          padding-right: 0;
+      }
+      .inner_div {
+          padding: 0;
+      }
+      .thisthis {
+          width: 95px;
+          line-height: 2;
+      }
+    .result_text {
+      font-size: 12px
+    }
+    .display_result {
+          font-size: 16px;
+      }
+  }
+  @media only screen and (max-width: 300px) {
+    .result_text {
+      font-size: 10px
+    }
+      .display_result {
+          font-size: 13px;
+      }
+      #textValue, #textValue2, #textValue3 {
+          font-size: 12px;
+      }
+      .col-4 {
+          font-size: 12px;
+      }
+  }
+    </style>
+    <link rel="stylesheet" href="com.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   
+</head>
+<body style="height: 100vh; background-color: #fffbf6;">
+
+
+    <nav  style="background-color: #f8dbb7;" class="navbar navbar-expand-lg bg-body- navbg">
+        <div class="container-fluid" >
+          <a  class="navbar-brand" href="#" style="color: black;">Stock Learnings</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item" >
+                <a  class="nav-link active" style="color: black;" aria-current="page" href="/" >Home</a>
+              </li>
+              <li class="nav-item">
+                <a  class="nav-link" aria-current="page" style="color: black;"  href="/news">News</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " aria-current="page" style="color: black;" href="/stock" >Stocks</a>
+              </li>
+              
+              
+            </ul>
+          </div>
+        </div>
+        <div class="sign d-flex me-3 align-items-center">
+            <form method="post" action="/" >
+              <button style="margin: 2px;" class="btn ">Logout</button>
+            </form>
+           
+          </div>
+      </nav>
+
+<div class="row mt-5 p-3">
+  <div class="col-12 col-md-7">
+  <div class="outer_div">
+          <div class="inner_div row">
+              <div class="col-6">Money Per month(₹)</div>
+              <div class="col-6 slider_box">
+                  <input class="text_input" id="textValue" value="500" onkeyup="setWattValue()" />
+              </div>
+            <div class="col-12">
+               <input title="Tooltip on top" value="500" min="500" max="200000" step="500" type="range"
+                      class="form-range col-8" id="watts" />
+                  <span id="showValue"  class="hide-span">500</span>
+            </div>
+          </div>
+      </div>
+      <div class="outer_div">
+          <div class="inner_div row">
+              <div class="col-6">Interest Rate(%)</div>
+              <div class="col-6 slider_box">
+                  <input class="text_input" id="textValue2" value="1" onkeyup="setVoltValue()" />
+              </div>
+            <div class="col-12">
+                  <input title="Tooltip on top" value="1" min="1" max="30" step="1" type="range" class="form-range col-8"
+                      id="volts" />
+                  <span id="showValue2" class="hide-span">1</span>
+            </div>
+          </div>
+      </div>
+  <div class="outer_div">
+          <div class="inner_div row">
+              <div class="col-6">Year(s)</div>
+              <div class="col-6 slider_box">
+                  <input class="text_input" id="textValue3" value="1" onkeyup="setYearValue()" />
+              </div>
+            <div class="col-12">
+                  <input title="Tooltip on top" value="1" min="1" max="30" step="1" type="range" class="form-range col-8"
+                      id="years" />
+                  <span id="showValue3"  class="hide-span">1</span>
+            </div>
+          </div>
+      </div>
+
+      <div class="outer_div outer_div2 row"  style="position: relative">
+          <div class="text-center col-6 col-md-4">
+              <div class="display_result" id="showInvested">1,20,000</div>
+              <div class="result_text">Invested</div>
+          </div>
+          <div class="text-center col-6 col-md-4">
+              <div class="display_result" id="showReturn">1,20,000</div>
+              <div class="result_text">Returns</div>
+          </div>
+          <div class="text-center col-12 col-md-4">
+              <div class="display_result" id="showAmps">1,20,000</div>
+              <div class="result_text">Total</div>
+          </div>
+      </div>
+</div>
+  
+  <div class="col-12 col-md-5 chartDiv" style="">
+    <canvas id="myChart" ></canvas>
+  </div>
+</div>
+<script >
+
+let currentWatt,
+    catchWatt = document.getElementById("watts"),
+    catchTooltipMaxSlide = catchWatt.offsetWidth - 15,
+    catchTooltip = document.getElementById("showValue"),
+    catchTextValue = document.getElementById("textValue"),
+
+    catchVolt = document.getElementById("volts"),
+    catchTooltip2MaxSlide = catchVolt.offsetWidth - 7,
+    catchTooltip2 = document.getElementById("showValue2"),
+    currentVolt,
+    catchTextValue2 = document.getElementById("textValue2"),
+    catchAmps = document.getElementById("showAmps"),
+    catchReturn = document.getElementById("showReturn"),
+    catchInvested = document.getElementById("showInvested"),
+
+    currentYear,
+    catchYear = document.getElementById("years"),
+    catchTooltip3MaxSlide = catchYear.offsetWidth - 7,
+    catchTooltip3 = document.getElementById("showValue3"),
+    catchTextValue3 = document.getElementById("textValue3"),
+    futureValue,
+    invested,
+    returnedValue;
+
+        catchWatt.oninput = function () {
+            tooltipSliding("watt");
+            calculateAmps();
+        };
+        catchVolt.oninput = function () {
+            tooltipSliding("volt");
+            calculateAmps();
+        };
+        catchYear.oninput = function () {
+            tooltipSliding("year");
+            calculateAmps();
+        };
+
+        function tooltipSliding(slider, textInput = "") {
+            if (slider == "watt") {
+                currentWatt = textInput == "" ? catchWatt.value : textInput;
+                catchTooltip.innerHTML = currentWatt < 500 ? 500 : currentWatt;
+                catchTextValue.value = parseInt(currentWatt);
+                let tooltipCanSlide = catchTooltipMaxSlide;
+                catchTooltip.style.left = `${parseInt(
+                    (tooltipCanSlide / 200000) * currentWatt
+                )}px`;
+            } else if (slider == "volt") {
+                currentVolt = textInput == "" ? catchVolt.value : textInput;
+                catchTooltip2.innerHTML = currentVolt;
+                catchTextValue2.value = parseInt(currentVolt);
+                let tooltipCanSlide = catchTooltip2MaxSlide;
+                catchTooltip2.style.left = `${parseInt(
+                    (tooltipCanSlide / 30) * currentVolt - 9
+                )}px`;
+              console.log(catchTooltip2.style.left)
+            } else if (slider == "year") {
+                currentYear = textInput == "" ? catchYear.value : textInput;
+                catchTooltip3.innerHTML = currentYear;
+                catchTextValue3.value = parseInt(currentYear);
+                let tooltipCanSlide = catchTooltip3MaxSlide;
+                catchTooltip3.style.left = `${parseInt(
+                    (tooltipCanSlide / 30) * currentYear - 9
+                )}px`;
+            }
+        }
+
+        function setWattValue() {
+            let pattern = /^[0-9]*$/,
+                v = catchTextValue.value;
+            if (pattern.test(v) && v != '' && v <= 200000 && v >= 500 || v == 50) {
+                originalValue = parseInt(catchTextValue.value);
+                catchTextValue.value = originalValue;
+                catchWatt.value = originalValue;
+                tooltipSliding("watt", originalValue);
+            } else {
+                catchTextValue.value = 500;
+                catchWatt.value = 500;
+                tooltipSliding("watt", 500);
+            }
+            if (v != '' && v <= 200000 && v >= 500) calculateAmps();
+        }
+
+        function setVoltValue() {
+            let pattern = /^[0-9]*$/,
+                v = catchTextValue2.value;
+            if (pattern.test(v) && v > -1 && v <= 30) {
+                originalValue = isNaN(parseInt(catchTextValue2.value)) ? 1 : parseInt(catchTextValue2.value);
+                catchTextValue2.value = originalValue;
+                catchVolt.value = originalValue;
+                tooltipSliding("volt", originalValue);
+                console.log('here', originalValue)
+            } else if (v != '') {
+                console.log('here2')
+                catchTextValue2.value = 1;
+                catchVolt.value = 1;
+                tooltipSliding("volt", 1);
+            }
+            calculateAmps();
+        }
+
+        function setYearValue() {
+            let pattern = /^[0-9]*$/,
+                v = catchTextValue3.value;
+            if (pattern.test(v) && v != '' && v >= 1 && v <= 30) {
+                originalValue = isNaN(parseInt(catchTextValue3.value)) ? 1 : parseInt(catchTextValue3.value);
+                catchTextValue3.value = originalValue;
+                catchYear.value = originalValue;
+                tooltipSliding("year", originalValue);
+            } else {
+                catchTextValue3.value = 1;
+                catchYear.value = 1;
+                tooltipSliding("year", 1);
+            }
+            calculateAmps();
+        }
+
+        window.addEventListener(
+            "resize",
+            function (event) {
+                catchTooltipMaxSlide = catchWatt.offsetWidth - 20;
+                catchTooltip2MaxSlide = catchVolt.offsetWidth - 20;
+            },
+            true
+        );
+
+let myChart;
+function calculateAmps() {
+  currentWatt = isNaN(currentWatt) ? 500 : currentWatt;
+  currentVolt = isNaN(currentVolt) ? 1 : currentVolt;
+  currentYear = isNaN(currentYear) ? 1 : currentYear;
+  
+  futureValue = futureValue == undefined ? 6266.33 : currentWatt * (((Math.pow((1 + (currentVolt / 100) / 12), (currentYear * 12))) - 1) / ((currentVolt / 100) / 12)) * (1 + (currentVolt / 100) / 12);
+  invested = invested == undefined ? 6000 : currentWatt * currentYear * 12;
+  returnedValue = futureValue - invested;
+  console.log('VALUES :', futureValue, invested, returnedValue)
+  
+    if (Number.isNaN(futureValue) == false) {
+        catchAmps.innerHTML = `₹${futureValue.toFixed(0)}`;
+        catchReturn.innerHTML = `₹${returnedValue.toFixed(0)}`;
+        catchInvested.innerHTML = `₹${invested.toFixed(0)}`;
+    } else {
+        catchAmps.innerHTML = "";
+    }
+    generateChart(parseInt(futureValue),  parseInt(invested), parseInt(returnedValue))
+}
+calculateAmps();
+
+
+function generateChart(a,b,c) {   
+  console.log('CHART===========',a,b,c)
+  if (!(isNaN(futureValue), isNaN(invested), isNaN(returnedValue))) {
+    if (myChart !== undefined) {
+      myChart.destroy();
+    }
+    const data = {
+      labels: [
+        'Total',
+        'Invested',
+        'Return'
+      ],
+      datasets: [{
+        label: 'My First Dataset',
+        data: [a,b,c],
+        backgroundColor: [
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 205, 86)'
+        ],
+        hoverOffset: 4
+      }]
+    };
+    const config = {
+      type: 'doughnut',
+      data: data,
+    };
+    myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
+  }
+};
+</script>
+</body>
+</html>
