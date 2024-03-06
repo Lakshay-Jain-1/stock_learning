@@ -431,7 +431,7 @@ small b {
       <% user.sort((a, b) => new Date(b.endedAt) - new Date(a.endedAt)).forEach(function(item) { %>
         <div class="players" style="display: flex; flex-direction: row; column-gap: 150px">
           <p style="color: black; width: 60px;"><%= item.name %></p>
-          <p style="color: black;"><%= item.endedAt %></p>
+          <h2 style="color: black;"><%= item.endedAt %></h2>
         </div>
       <% }) %>
         
